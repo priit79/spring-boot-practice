@@ -7,7 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+
 /**
+ * Course model
+ *
  * @author Priit Enno
  * @ Date 22.02.2023
  */
@@ -32,5 +35,6 @@ public class Course extends Auditable<String> implements Serializable {
     @OneToOne(cascade = CascadeType.MERGE)
     private School school;
 
+    private boolean isActive;
 }
 
