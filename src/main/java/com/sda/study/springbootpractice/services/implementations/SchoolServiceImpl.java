@@ -84,6 +84,7 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void restoreSchoolById(Long id) throws SchoolNotFoundException, CourseNotFoundException {
         School school = findSchoolById(id);
+        // schoolRepository.delete(school): // To delete the record completely from  the repo
         school.setActive(true);
         schoolRepository.saveAndFlush(school);
 
