@@ -3,15 +3,11 @@ package com.sda.study.springbootpractice.models;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 /**
- *
- *Authority Model
+ * User model
  *
  * @author Priit Enno
  * @Date 13.03.2023
@@ -19,13 +15,19 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Authority extends Auditable<String> implements Serializable {
+@Table(name = "users")
+public class User extends Auditable<String> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String username;
+    private String password;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Authority authority;
+
     private boolean isActive;
 }

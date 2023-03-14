@@ -5,4 +5,5 @@ package com.sda.study.springbootpractice.services;
  * @ Date 13.03.2023
  */
 public interface UserService {
+
 }
