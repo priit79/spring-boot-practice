@@ -1,10 +1,9 @@
 package com.sda.study.springbootpractice.models;
 
 import lombok.Data;
-
-import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
