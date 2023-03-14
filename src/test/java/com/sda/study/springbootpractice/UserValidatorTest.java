@@ -36,8 +36,8 @@ public class UserValidatorTest {
     @Test
     public void givenUser_whenIsAdminCalledFunctionally_shouldExpectException(){
         User user = new User();
-        user.setFirstName("Vinod");
-        user.setLastName("John");
+        user.setFirstName("Priit");
+        user.setLastName("Enno");
         user.setPassword("123456");
         user.setUserType(UserType.STUDENT);
 
@@ -46,7 +46,7 @@ public class UserValidatorTest {
         UserValidationException e = Assertions.assertThrows(UserValidationException.class,
                 () -> userValidator.isAdminUser(user));
 
-        String exceptedMessage = "User validation failed for user: Vinod John, Error: User admin check failed!";
+        String exceptedMessage = "User validation failed for user: Priit Enno, Error: User admin check failed!";
         Assertions.assertEquals(exceptedMessage, e.getLocalizedMessage());
     }
 
@@ -54,8 +54,8 @@ public class UserValidatorTest {
     @Test
     public void givenUser_whenIsAdminUserCalled_shouldExpectNPE() {
         User user = new User();
-        user.setFirstName("Vinod");
-        user.setLastName("John");
+        user.setFirstName("Priit");
+        user.setLastName("Enno");
         user.setPassword("123456");
 
         org.assertj.core.api.Assertions.assertThatThrownBy(() -> new UserValidator().isAdminUser(user))
@@ -67,38 +67,38 @@ public class UserValidatorTest {
     @Test
     public void givenUser_whenIsAdminUserCalled_shouldExpectExceptionAssert() {
         User user = new User();
-        user.setFirstName("Vinod");
-        user.setLastName("John");
+        user.setFirstName("Priit");
+        user.setLastName("Enno");
         user.setPassword("123456");
         user.setUserType(UserType.STUDENT);
 
         org.assertj.core.api.Assertions.assertThatExceptionOfType(UserValidationException.class)
                 .isThrownBy(() -> new UserValidator().isAdminUser(user))
                 .withNoCause()
-                .withMessageContaining("User validation failed for user: Vinod John, Error: User admin check failed!");
+                .withMessageContaining("User validation failed for user: Priit Enno, Error: User admin check failed!");
     }
 
     @Test
     public void givenUserWithoutUserType_whenIsAdminUserCalled_shouldExpectException() {
         User user = new User();
-        user.setFirstName("Vinod");
-        user.setLastName("John");
+        user.setFirstName("Priit");
+        user.setLastName("Enno");
         user.setPassword("123456");
 
         Throwable exception = org.assertj.core.api.Assertions.catchThrowable(() -> new UserValidator().isAdminUser(user));
-        Assertions.assertEquals("The user type is null for user: Vinod John", exception.getLocalizedMessage());
+        Assertions.assertEquals("The user type is null for user: Priit Enno", exception.getLocalizedMessage());
     }
 
     @Test
     public void givenUser_whenIsAdminUserCalled_shouldExpectUserValidationException() {
         User user = new User();
-        user.setFirstName("Vinod");
-        user.setLastName("John");
+        user.setFirstName("Priit");
+        user.setLastName("Enno");
         user.setPassword("123456");
         user.setUserType(UserType.STUDENT);
 
         UserValidationException userValidationException = org.assertj.core.api.Assertions.catchThrowableOfType(() -> new UserValidator().isAdminUser(user), UserValidationException.class);
-        String exceptedMessage = "User validation failed for user: Vinod John, Error: User admin check failed!";
+        String exceptedMessage = "User validation failed for user: Priit Enno, Error: User admin check failed!";
         Assertions.assertEquals(exceptedMessage, userValidationException.getLocalizedMessage());
     }
 
